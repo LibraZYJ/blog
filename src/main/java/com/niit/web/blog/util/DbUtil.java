@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 /**
  * 数据库连接工具类
  *
- * @author mqxu
+ * @author zhaoyujie
  * @date 2019-11-07
  */
 public class DbUtil {

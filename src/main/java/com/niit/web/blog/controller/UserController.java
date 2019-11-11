@@ -7,10 +7,10 @@ import com.niit.web.blog.domain.UserDto;
 import com.niit.web.blog.factory.ServiceFactory;
 import com.niit.web.blog.filter.CorsFilter;
 import com.niit.web.blog.service.UserService;
+import com.niit.web.blog.util.Message;
 import com.niit.web.blog.util.ResponseObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,9 +22,9 @@ import java.io.PrintWriter;
 import java.util.Map;
 
 /**
- * @author mq_xu
+ * @author zhaoyujie
  * @ClassName UserController
- * @Description TODO
+ * @Description 用户控制器
  * @Date 15:56 2019/11/9
  * @Version 1.0
  **/
@@ -38,26 +38,23 @@ public class UserController extends HttpServlet {
         BufferedReader reader = req.getReader();
         StringBuilder stringBuilder = new StringBuilder();
         String line = null;
-        while ((line = reader.readLine()) != null) {
+        while ((line = reader.readLine()) != null){
             stringBuilder.append(line);
         }
-        logger.info("登录用户信息：" + stringBuilder.toString());
+        logger.info("登录用户信息:" + stringBuilder.toString());
         Gson gson = new GsonBuilder().create();
         UserDto userDto = gson.fromJson(stringBuilder.toString(), UserDto.class);
         Map<String, Object> map = userService.signIn(userDto);
         String msg = (String) map.get("msg");
         ResponseObject ro;
-        switch (msg) {
-            case "登录成功":
-                ro = ResponseObject.success(200, msg, map.get("data"));
-                break;
-            case "密码错误":
-            case "手机号不存在":
-            default:
-                ro = ResponseObject.success(200, msg);
+        if(msg.equals(Message.SIGN_IN_SUCCESS)){
+            ro = ResponseObject.success(200, msg, map.get("data"));
+        }else {
+            ro = ResponseObject.success(200, msg);
         }
         PrintWriter out = resp.getWriter();
         out.print(gson.toJson(ro));
         out.close();
     }
+
 }

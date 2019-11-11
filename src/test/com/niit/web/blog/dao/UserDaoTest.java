@@ -33,9 +33,11 @@ public class UserDaoTest {
 
     @Test
     public void batchInsert() {
-        int[] n = new int[0];
         try {
-            n = userDao.batchInsert(JSoupSpider.getUsers());
+            int[] result = userDao.batchInsert(JSoupSpider.getUsers());
+            if (result.length != 0) {
+                logger.info("成功新增" + result.length + "个用户");
+            }
         } catch (SQLException e) {
             logger.error("批量新增用户出现异常");
         }
@@ -45,7 +47,7 @@ public class UserDaoTest {
     public void findUserByMobile() {
         User user = null;
         try {
-            user = userDao.findUserByMobile("13942157714");
+            user = userDao.findUserByMobile("13978536968");
         } catch (SQLException e) {
             logger.error("根据手机号查询用户出现异常");
         }

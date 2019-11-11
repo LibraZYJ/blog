@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * @author Tao
  * @ClassName UserDaoImpl
- * @Description TODO
+ * @Description 用户接口实现
  * @Date 2019/11/9
  * @Version 1.0
  **/
@@ -64,7 +64,6 @@ public class UserDaoImpl implements UserDao {
         ResultSet rs = pstmt.executeQuery();
         User user = null;
         if (rs.next()){
-            user = new User();
             user = new User();
             user.setId(rs.getLong("id"));
             user.setMobile(rs.getString("mobile"));

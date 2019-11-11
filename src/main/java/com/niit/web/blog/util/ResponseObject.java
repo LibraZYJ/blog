@@ -3,7 +3,7 @@ package com.niit.web.blog.util;
 import lombok.Data;
 
 /**
- * @author mq_xu
+ * @author zhaoyujie
  * @ClassName ResponseObject
  * @Description 统一的响应对象，采用了单例模式
  * @Date 9:18 2019/10/9

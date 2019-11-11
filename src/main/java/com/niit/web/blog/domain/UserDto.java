@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * @author yujie_zhao
  * @ClassName UserDao
- * @Description TODO
+ * @Description 用户传输对象
  * @Date 2019/11/9
  * @Version 1.0
  **/

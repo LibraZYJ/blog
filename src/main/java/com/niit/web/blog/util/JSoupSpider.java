@@ -1,5 +1,6 @@
 package com.niit.web.blog.util;
 
+import com.niit.web.blog.entity.Article;
 import com.niit.web.blog.entity.User;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author mq_xu
+ * @author zhaoyujie
  * @ClassName JSoupSpider
  * @Description JSoup实现的一个爬虫工具
  * @Date 9:13 2019/11/7
@@ -50,5 +51,32 @@ public class JSoupSpider {
             });
         }
         return userList;
+    }
+    public static List<Article> getArticle() {
+        Document document = null;
+        List<Article> articleList = new ArrayList<>(100);
+
+            try {
+                document = Jsoup.connect("https://www.jianshu.com/").get();
+            } catch (IOException e) {
+                logger.error("获取文章连接异常");
+            }
+            Elements divs = document.getElementsByClass("have-img");
+            divs.forEach(div -> {
+                Element wrapImg = div.child(0);
+                Element contentDiv = div.child(1);
+                Element account = contentDiv.child(2);
+                Article article = new Article();
+                article.setAuthorId(ArticleDataUtil.getAuthorId());
+                article.setHeadLine(UserDataUtil.getGender());
+                article.setContent(contentDiv.child(1).text());
+                article.setAvatar("https:" + wrapImg.child(0).attr("src"));
+                article.setLikeAccount(ArticleDataUtil.getLikeAccount());
+                article.setCommentAccount(ArticleDataUtil.getCommentAccount());
+                article.setCreateTime(LocalDateTime.now());
+                articleList.add(article);
+            });
+
+        return articleList;
     }
 }
