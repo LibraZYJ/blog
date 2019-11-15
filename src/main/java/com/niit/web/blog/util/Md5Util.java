@@ -25,11 +25,11 @@ public class Md5Util {
             byte[] hash = md.digest();
             for(byte b : hash){
                 if((0xff & b) < 0x10){
-                    hexString.append("0").append(Integer.toHexString((0xFF & b)));
-                }else{
-                    hexString.append(Integer.toHexString(0xFF & b));
-                }
+                hexString.append("0").append(Integer.toHexString((0xFF & b)));
+            }else{
+                hexString.append(Integer.toHexString(0xFF & b));
             }
+        }
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }

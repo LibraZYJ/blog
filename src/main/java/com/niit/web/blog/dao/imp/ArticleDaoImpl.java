@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 /**
  * @author yujie_zhao
@@ -29,18 +30,17 @@ public class ArticleDaoImpl implements ArticleDao {
         String sql = "SELECT * FROM t_article ORDER BY id DESC";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
-        List<Article> articleList = null;
-        Article article =null;
+        List<Article> articleList = new ArrayList<>();
         while (rs.next()){
-            article = new Article();
+            Article article = new Article();
             article.setId(rs.getLong("id"));
-            article.setNickname(rs.getString("nickname"));
-            article.setHeadLine(rs.getString("headline"));
+            article.setAuthorId(rs.getInt("authorId"));
+            article.setTitle(rs.getString("title"));
             article.setContent(rs.getString("content"));
-            article.setAvatar(rs.getString("picture"));
-            article.setLikeAccount(rs.getInt("likenum"));
-            article.setCommentAccount(rs.getInt("commentnum"));
-            article.setCreateTime(rs.getTimestamp("create_time").toLocalDateTime());
+            article.setAvatar(rs.getString("avatar"));
+            article.setLikeAccount(rs.getInt("likeAccount"));
+            article.setCommentAccount(rs.getInt("commentAccount"));
+            article.setCreateTime(rs.getTimestamp("createTime").toLocalDateTime());
             articleList.add(article);
         }
         return articleList;
@@ -49,13 +49,13 @@ public class ArticleDaoImpl implements ArticleDao {
     @Override
     public int[] batchInsert(List<Article> articleList) throws SQLException {
         Connection connection = DbUtil.getConnection();
-        String sql = "INSERT INTO t_article(authorId, headLine, content, avatar, likeAccount, commentAccount, createTime) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO t_article(authorId, title, content, avatar, likeAccount, commentAccount, createTime) VALUES (?,?,?,?,?,?,?)";
         connection.setAutoCommit(false);
         PreparedStatement pstmt = connection.prepareStatement(sql);
         articleList.forEach(article -> {
             try {
                 pstmt.setInt(1,article.getAuthorId());
-                pstmt.setString(2,article.getHeadLine());
+                pstmt.setString(2,article.getTitle());
                 pstmt.setString(3,article.getContent());
                 pstmt.setString(4,article.getAvatar());
                 pstmt.setInt(6,article.getLikeAccount());

@@ -34,7 +34,6 @@ public class UserDataUtil {
             int num = random.nextInt(10);
             password.append(num);
         }
-
         return DigestUtils.md5Hex(password.toString());
     }
     public static String getGender(){

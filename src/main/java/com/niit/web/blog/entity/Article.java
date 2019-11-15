@@ -14,8 +14,7 @@ import java.time.LocalDateTime;
 public class Article {
     private Long id;
     private Integer authorId;
-    private String nickname;
-    private String headLine;
+    private String title;
     private String content;
     private String avatar;
     private Integer likeAccount;

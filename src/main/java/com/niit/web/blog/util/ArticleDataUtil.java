@@ -1,6 +1,7 @@
 package com.niit.web.blog.util;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Random;
 
 import static java.lang.Integer.parseInt;
@@ -48,12 +49,18 @@ public class ArticleDataUtil {
         return genders[index];
     }
 
-    public static LocalDate getCreateTime(){
-        LocalDate now = LocalDate.now();
+//    public static LocalDate getCreateTime(){
+//        LocalDate now = LocalDate.now();
+//        Random random = new Random();
+//        int bound = random.nextInt(8888);
+//
+//        return now.minusDays(bound);
+//    }
+    public static LocalDateTime getCreateTime(){
+        LocalDateTime now = LocalDateTime.now();
         Random random = new Random();
-        int bound = random.nextInt(8888);
-
-        return now.minusDays(bound);
+        int bound = random.nextInt(999);
+        return now.minusHours(bound);
     }
 
 

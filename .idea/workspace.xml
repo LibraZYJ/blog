@@ -7,35 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a97a83a-6d40-4deb-8db1-f3440c8b5784" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/dao/ArticleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/dao/imp/ArticleDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/entity/Article.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/ArticleDataUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/Md5Util.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/com/niit/web/blog/dao/ArticleDaoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/controller/ArticleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/service/ArticleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/service/impl/ArticleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/main.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/dao/imp/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/dao/imp/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/domain/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/domain/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/factory/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/factory/DaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/dao/imp/ArticleDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/dao/imp/ArticleDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/entity/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/entity/Article.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/factory/ServiceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/factory/ServiceFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/filter/CorsFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/filter/CorsFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/DataUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/DbUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/DbUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/ArticleDataUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/ArticleDataUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/JSoupSpider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/JSoupSpider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/Md5Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/Md5Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/ResponseObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/ResponseObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/com/niit/web/blog/dao/UserDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/com/niit/web/blog/dao/UserDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/com/niit/web/blog/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/com/niit/web/blog/service/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/niit/web/blog/dao/imp/UserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/niit/web/blog/dao/imp/UserDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/niit/web/blog/factory/DaoFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/niit/web/blog/factory/DaoFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/UserDataUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/UserDataUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/com/niit/web/blog/dao/ArticleDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/com/niit/web/blog/dao/ArticleDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/niit/web/blog/factory/ServiceFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/niit/web/blog/factory/ServiceFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/niit/web/blog/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/niit/web/blog/service/impl/UserServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/niit/web/blog/util/JSoupSpider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/niit/web/blog/util/JSoupSpider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/niit/web/blog/dao/UserDaoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/niit/web/blog/dao/UserDaoTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/niit/web/blog/service/UserServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/niit/web/blog/service/UserServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/niit/web/blog/util/UserDataUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/niit/web/blog/util/UserDataUtil.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,9 +38,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Arquillian JUnit Test Class" />
+        <option value="JUnit4 Test Class" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -144,6 +135,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Md5Util" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.niit.web.blog.util.Md5Util" />
+      <module name="blog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.niit.web.blog.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ArticleDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="blog" />
       <extension name="coverage">
@@ -175,7 +179,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDaoTest.batchInsert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ArticleDaoTest.selectAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="blog" />
       <extension name="coverage">
         <pattern>
@@ -184,24 +188,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.niit.web.blog.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.niit.web.blog.dao.UserDaoTest" />
-      <option name="METHOD_NAME" value="batchInsert" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServiceTest.signIn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="blog" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.niit.web.blog.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.niit.web.blog.service" />
-      <option name="MAIN_CLASS_NAME" value="com.niit.web.blog.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="signIn" />
+      <option name="MAIN_CLASS_NAME" value="com.niit.web.blog.dao.ArticleDaoTest" />
+      <option name="METHOD_NAME" value="selectAll" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -281,19 +269,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.ArticleDataUtil" />
-      <item itemvalue="JUnit.UserDaoTest.batchInsert" />
-      <item itemvalue="JUnit.UserServiceTest.signIn" />
+      <item itemvalue="Application.Md5Util" />
       <item itemvalue="JUnit.ArticleDaoTest" />
       <item itemvalue="JUnit.ArticleDaoTest.batchInsert" />
+      <item itemvalue="JUnit.ArticleDaoTest.selectAll" />
       <item itemvalue="Tomcat Server.blog" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ArticleDaoTest.batchInsert" />
+        <item itemvalue="JUnit.ArticleDaoTest.selectAll" />
+        <item itemvalue="Application.Md5Util" />
         <item itemvalue="JUnit.ArticleDaoTest" />
         <item itemvalue="Application.ArticleDataUtil" />
-        <item itemvalue="JUnit.UserServiceTest.signIn" />
-        <item itemvalue="JUnit.UserDaoTest.batchInsert" />
       </list>
     </recent_temporary>
   </component>
@@ -317,7 +305,13 @@
       <workItem from="1573356898140" duration="2626000" />
       <workItem from="1573363966396" duration="2453000" />
       <workItem from="1573437456456" duration="5459000" />
-      <workItem from="1573474165192" duration="802000" />
+      <workItem from="1573474165192" duration="887000" />
+      <workItem from="1573536362507" duration="1967000" />
+      <workItem from="1573570111638" duration="2063000" />
+      <workItem from="1573603252708" duration="619000" />
+      <workItem from="1573709188353" duration="18685000" />
+      <workItem from="1573775588486" duration="1575000" />
+      <workItem from="1573794087778" duration="327000" />
     </task>
     <task id="LOCAL-00001" summary="blog登录接口实现">
       <created>1573291554558</created>
@@ -326,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573291554558</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="blog登录接口实现">
+      <created>1573477197191</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573477197191</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

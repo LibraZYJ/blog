@@ -1,2 +1,2 @@
-2019-11-11.10:12:42 ERROR [main] com.niit.web.blog.dao.ArticleDaoTest.batchInsert:21  获取文章失败
-2019-11-11.10:40:10 INFO  [main] com.niit.web.blog.dao.ArticleDaoTest.batchInsert:18  获取文章数据成功
+2019-11-14.20:12:07 INFO  [main] com.niit.web.blog.dao.ArticleDaoTest.batchInsert:20  获取文章数据成功
+2019-11-14.20:25:47 INFO  [main] com.niit.web.blog.dao.ArticleDaoTest.batchInsert:20  获取文章数据成功

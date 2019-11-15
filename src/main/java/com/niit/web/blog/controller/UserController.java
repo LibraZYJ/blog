@@ -2,10 +2,8 @@ package com.niit.web.blog.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.niit.web.blog.dao.UserDao;
 import com.niit.web.blog.domain.UserDto;
 import com.niit.web.blog.factory.ServiceFactory;
-import com.niit.web.blog.filter.CorsFilter;
 import com.niit.web.blog.service.UserService;
 import com.niit.web.blog.util.Message;
 import com.niit.web.blog.util.ResponseObject;

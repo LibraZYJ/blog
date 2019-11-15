@@ -19,7 +19,7 @@ public class ResponseObject {
     /**
      * 构造方法私有，禁止外部类创建该类对象
      */
-    private ResponseObject() {
+    public ResponseObject() {
 
     }
 

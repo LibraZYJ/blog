@@ -5,6 +5,7 @@ import com.niit.web.blog.domain.UserDto;
 import com.niit.web.blog.entity.User;
 import com.niit.web.blog.factory.DaoFactory;
 import com.niit.web.blog.service.UserService;
+import com.niit.web.blog.util.Md5Util;
 import com.niit.web.blog.util.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +27,7 @@ public class UserServiceImpl implements UserService {
             logger.error("根据手机号查询用户出现异常");
         }
         if(user != null){
-            if(user.getPassword().equals(userDto.getPassword())){
+            if(user.getPassword().equals(Md5Util.crypt(userDto.getPassword()))){
                 map.put("msg", Message.SIGN_IN_SUCCESS);
                 map.put("data", user);
             }else {
