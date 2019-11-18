@@ -1,6 +1,7 @@
 package com.niit.web.blog.service.impl;
 
 import com.niit.web.blog.dao.ArticleDao;
+import com.niit.web.blog.domain.vo.ArticleVo;
 import com.niit.web.blog.entity.Article;
 import com.niit.web.blog.factory.DaoFactory;
 import com.niit.web.blog.service.ArticleService;
@@ -20,6 +21,8 @@ import java.util.List;
 public class ArticleServiceImpl implements ArticleService {
     private ArticleDao articleDao = DaoFactory.getArticleInstance();
     private Logger logger = LoggerFactory.getLogger(ArticleServiceImpl.class);
+
+
     @Override
     public List<Article> ListArticle() {
         List<Article> articleList = null;
@@ -29,6 +32,18 @@ public class ArticleServiceImpl implements ArticleService {
             logger.error("查询书出现异常");
         }
         return articleList;
+    }
+
+
+    @Override
+    public List<ArticleVo> listAuthorArticle(long id) {
+        List<ArticleVo> articleVoList = null;
+        try {
+            articleVoList = articleDao.selectAuthorArticle(id);
+        } catch (SQLException e) {
+            logger.error("查询登录用户文章信息异常");
+        }
+        return articleVoList;
     }
 
 }

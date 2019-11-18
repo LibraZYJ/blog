@@ -2,7 +2,8 @@ package com.niit.web.blog.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.niit.web.blog.domain.UserDto;
+import com.niit.web.blog.domain.dto.UserDto;
+import com.niit.web.blog.entity.User;
 import com.niit.web.blog.factory.ServiceFactory;
 import com.niit.web.blog.service.UserService;
 import com.niit.web.blog.util.Message;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,6 +32,26 @@ import java.util.Map;
 public class UserController extends HttpServlet {
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
     private UserService userService = ServiceFactory.getUserServiceInstance();
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Gson gson  = new GsonBuilder().create();
+
+        List<User> articleList = userService.ListUser();
+
+        ResponseObject ro = new ResponseObject();
+        ro.setCode(resp.getStatus());
+        if (resp.getStatus() == 200){
+            ro.setMsg("响应成功");
+        }else {
+            ro.setMsg("响应失败");
+        }
+        ro.setData(articleList);
+        PrintWriter out = resp.getWriter();
+        out.print(gson.toJson(ro));
+        out.close();
+
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

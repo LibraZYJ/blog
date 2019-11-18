@@ -1,5 +1,6 @@
 package com.niit.web.blog.dao;
 
+import com.niit.web.blog.factory.ServiceFactory;
 import org.junit.Test;
 import com.niit.web.blog.entity.User;
 import com.niit.web.blog.factory.DaoFactory;
@@ -44,13 +45,14 @@ public class UserDaoTest {
     }
 
     @Test
-    public void findUserByMobile() {
-        User user = null;
-        try {
-            user = userDao.findUserByMobile("13978536968");
-        } catch (SQLException e) {
-            logger.error("根据手机号查询用户出现异常");
-        }
-        assertNotNull(user);
+    public void findUserByMobile() throws SQLException {
+        User user = userDao.findUserByMobile("13906567215");
+        System.out.println(user);
+    }
+
+    @Test
+    public void getUserById() {
+        User user = ServiceFactory.getUserServiceInstance().findUserById(2);
+        System.out.println(user);
     }
 }

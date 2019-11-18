@@ -15,6 +15,7 @@ public class Article {
     private Long id;
     private Integer authorId;
     private String title;
+    private String sketch;
     private String content;
     private String avatar;
     private Integer likeAccount;

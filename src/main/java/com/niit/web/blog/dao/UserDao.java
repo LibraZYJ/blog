@@ -14,6 +14,12 @@ import java.util.List;
  **/
 public interface UserDao {
     /**
+     * 查询所有信息
+     * @return
+     * @throws SQLException
+     */
+    List<User> selectAll() throws SQLException;
+    /**
      * 新增用户
      * @param user
      * @return
@@ -37,4 +43,11 @@ public interface UserDao {
      * @throws SQLException
      */
     User findUserByMobile(String mobile) throws SQLException;
+    /**
+     * 通过id查询用户
+     * @param id
+     * @return
+     * @throws SQLException
+     */
+    User getUserById (long id) throws SQLException;
 }

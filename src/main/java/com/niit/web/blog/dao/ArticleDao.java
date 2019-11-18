@@ -1,5 +1,6 @@
 package com.niit.web.blog.dao;
 
+import com.niit.web.blog.domain.vo.ArticleVo;
 import com.niit.web.blog.entity.Article;
 import com.niit.web.blog.entity.User;
 
@@ -29,4 +30,10 @@ public interface ArticleDao {
      * @throws SQLException
      */
     int[] batchInsert(List<Article> articleList) throws SQLException;
+    /**
+     * 查看登录用户的文章信息
+     * @return
+     * @throws SQLException
+     */
+    List<ArticleVo> selectAuthorArticle(long id) throws SQLException;
 }

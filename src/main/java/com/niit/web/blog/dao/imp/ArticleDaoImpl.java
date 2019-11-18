@@ -1,5 +1,6 @@
 package com.niit.web.blog.dao.imp;
 import com.niit.web.blog.dao.ArticleDao;
+import com.niit.web.blog.domain.vo.ArticleVo;
 import com.niit.web.blog.entity.Article;
 
 import com.niit.web.blog.util.DbUtil;
@@ -36,6 +37,7 @@ public class ArticleDaoImpl implements ArticleDao {
             article.setId(rs.getLong("id"));
             article.setAuthorId(rs.getInt("authorId"));
             article.setTitle(rs.getString("title"));
+            article.setSketch(rs.getString("sketch"));
             article.setContent(rs.getString("content"));
             article.setAvatar(rs.getString("avatar"));
             article.setLikeAccount(rs.getInt("likeAccount"));
@@ -49,18 +51,19 @@ public class ArticleDaoImpl implements ArticleDao {
     @Override
     public int[] batchInsert(List<Article> articleList) throws SQLException {
         Connection connection = DbUtil.getConnection();
-        String sql = "INSERT INTO t_article(authorId, title, content, avatar, likeAccount, commentAccount, createTime) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO t_article(authorId, title,sketch,content, avatar, likeAccount, commentAccount, createTime) VALUES (?,?,?,?,?,?,?,?)";
         connection.setAutoCommit(false);
         PreparedStatement pstmt = connection.prepareStatement(sql);
         articleList.forEach(article -> {
             try {
                 pstmt.setInt(1,article.getAuthorId());
                 pstmt.setString(2,article.getTitle());
-                pstmt.setString(3,article.getContent());
-                pstmt.setString(4,article.getAvatar());
+                pstmt.setString(3,article.getSketch());
+                pstmt.setString(4,article.getContent());
+                pstmt.setString(5,article.getAvatar());
                 pstmt.setInt(6,article.getLikeAccount());
-                pstmt.setInt(5,article.getCommentAccount());
-                pstmt.setObject(7,article.getCreateTime());
+                pstmt.setInt(7,article.getCommentAccount());
+                pstmt.setObject(8,article.getCreateTime());
                 pstmt.addBatch();
             } catch (SQLException e) {
                 logger.error("文章批量插入出错");
@@ -70,6 +73,38 @@ public class ArticleDaoImpl implements ArticleDao {
         connection.commit();
         DbUtil.close(null,pstmt,connection);
         return n;
+    }
+
+    @Override
+    public List<ArticleVo> selectAuthorArticle(long id) throws SQLException {
+        List<ArticleVo> articleVoList = new ArrayList<>(20);
+        Connection connection = DbUtil.getConnection();
+        /*在文章表和用户表联查，得到结视图对象*/
+        String sql = "SELECT a.id, a.author_id, a.title, a.comment_account, a.avatar, a.like_account,a.create_time, a.content, b.id, b.nickname, b.avatar\n" +
+                "FROM t_article a\n" +
+                "LEFT JOIN t_user b\n" +
+                "ON a.author_id = b.id\n" +
+                "WHERE b.id = ?\n"+
+                /* ORDER BY:对结果集进行排序。  DESC：降序  asc:升序  Limit：检索数据的数量limit(a,b) a:从a+1开始检索，b:检索的最大长达*/
+                "ORDER BY a.author_id DESC LIMIT 20";
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        /*对sql语句中的问号进行赋值*/
+        pstmt.setLong(1,id);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()){
+            ArticleVo articleVo = new ArticleVo();
+            articleVo.setId(rs.getLong("id"));
+            articleVo.setAuthorId(rs.getLong("author_id"));
+            articleVo.setAvatar(rs.getString("avatar"));
+            articleVo.setTitle(rs.getString("title"));
+            articleVo.setContent(rs.getString("content"));
+            articleVo.setCommentAccount(rs.getInt("comment_account"));
+            articleVo.setNickname(rs.getString("nickname"));
+            articleVo.setLikeAccount(rs.getInt("like_account"));
+            articleVo.setCreateTime(rs.getTimestamp("create_time").toLocalDateTime());
+            articleVoList.add(articleVo);
+        }
+        return articleVoList;
     }
 
 
