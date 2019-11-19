@@ -24,5 +24,5 @@ public interface ArticleService {
      * @param id
      * @return
      */
-    public List<ArticleVo> listAuthorArticle(long id);
+     List<ArticleVo> listAuthorArticle(long id);
 }

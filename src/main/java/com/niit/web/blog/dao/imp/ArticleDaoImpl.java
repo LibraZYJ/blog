@@ -23,8 +23,6 @@ import java.util.List;
 public class ArticleDaoImpl implements ArticleDao {
 
     private Logger logger = LoggerFactory.getLogger(ArticleDaoImpl.class);
-
-
     @Override
     public List<Article> selectAll() throws SQLException {
         Connection connection = DbUtil.getConnection();
@@ -80,13 +78,13 @@ public class ArticleDaoImpl implements ArticleDao {
         List<ArticleVo> articleVoList = new ArrayList<>(20);
         Connection connection = DbUtil.getConnection();
         /*在文章表和用户表联查，得到结视图对象*/
-        String sql = "SELECT a.id, a.author_id, a.title, a.comment_account, a.avatar, a.like_account,a.create_time, a.content, b.id, b.nickname, b.avatar\n" +
+        String sql = "SELECT a.id, a.authorId, a.title, a.sketch, a.avatar, content,a.createTime, a.likeAccount,a.commentAccount, b.id, b.nickname, b.avatar\n" +
                 "FROM t_article a\n" +
                 "LEFT JOIN t_user b\n" +
-                "ON a.author_id = b.id\n" +
-                "WHERE b.id = ?\n"+
+                "ON a.authorId = b.id\n" +
+                "WHERE a.authorId = ?\n"+
                 /* ORDER BY:对结果集进行排序。  DESC：降序  asc:升序  Limit：检索数据的数量limit(a,b) a:从a+1开始检索，b:检索的最大长达*/
-                "ORDER BY a.author_id DESC LIMIT 20";
+                "ORDER BY a.authorId DESC LIMIT 20";
         PreparedStatement pstmt = connection.prepareStatement(sql);
         /*对sql语句中的问号进行赋值*/
         pstmt.setLong(1,id);
@@ -94,14 +92,15 @@ public class ArticleDaoImpl implements ArticleDao {
         while (rs.next()){
             ArticleVo articleVo = new ArticleVo();
             articleVo.setId(rs.getLong("id"));
-            articleVo.setAuthorId(rs.getLong("author_id"));
-            articleVo.setAvatar(rs.getString("avatar"));
+            articleVo.setAuthorId(rs.getLong("authorId"));
             articleVo.setTitle(rs.getString("title"));
+            articleVo.setDescription(rs.getString("sketch"));
+            articleVo.setAvatar(rs.getString("avatar"));
             articleVo.setContent(rs.getString("content"));
-            articleVo.setCommentAccount(rs.getInt("comment_account"));
+            articleVo.setCreateTime(rs.getTimestamp("createTime").toLocalDateTime());
+            articleVo.setCommentAccount(rs.getInt("likeAccount"));
+            articleVo.setCommentAccount(rs.getInt("commentAccount"));
             articleVo.setNickname(rs.getString("nickname"));
-            articleVo.setLikeAccount(rs.getInt("like_account"));
-            articleVo.setCreateTime(rs.getTimestamp("create_time").toLocalDateTime());
             articleVoList.add(articleVo);
         }
         return articleVoList;

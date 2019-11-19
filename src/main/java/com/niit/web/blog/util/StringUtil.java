@@ -1,4 +1,5 @@
 package com.niit.web.blog.util;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
@@ -9,7 +10,6 @@ import java.util.regex.Pattern;
  * @Version 1.0
  **/
 public class StringUtil {
-
     /**
      * 提取字符串中的数字字符为一个字符串数组
      *
@@ -28,6 +28,32 @@ public class StringUtil {
         }
         return result;
     }
+    public static String getcode (){
+        StringBuilder sb = new StringBuilder("");
+        Random random = new Random();
+        for(int i =0; i<6;i++){
+            if (i%2==0) {
+                int num = random.nextInt(10);
+                sb.append(num);
+            }else{
+                final int temp = random.nextInt(26) + 97;
+                String s = String.valueOf((char) temp);
+                sb.append(s);
+            }
+
+
+        }
+        return  sb.toString();
+    }
+    public static String getNum (){
+        StringBuilder stringBuilder = new StringBuilder("");
+        Random random = new Random();
+        for(int i =0; i<4;i++){
+            int num = random.nextInt(10);
+            stringBuilder.append(num);
+        }
+        return  stringBuilder.toString();
+    }
 
 
     public static void main(String[] args) {
@@ -39,5 +65,11 @@ public class StringUtil {
             System.out.println(m.group());
             i++;
         }
+        System.out.println(getNum());
+        System.out.println(getcode());
+    }
+
+    public static String getRandomCode() {
+        return null;
     }
 }

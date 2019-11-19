@@ -59,11 +59,15 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int[] batchInsert(List<User> userList) throws SQLException {
+        //        连接数据库
         Connection connection = DbUtil.getConnection();
+        //        关闭自动提交（true的时候即为自动提交）
         connection.setAutoCommit(false);
+        //        sql语句，就是数据执行的操作，括号中的为数据库中的列名（主键自增，不设值），问号的个数与列名数相等
         String sql = "INSERT INTO t_user (mobile,password,nickname,avatar,gender,birthday,introduction,create_time) VALUES (?,?,?,?,?,?,?,?) ";
-
+//        执行sql语句
         PreparedStatement pstmt = connection.prepareStatement(sql);
+        //        遍历，将数据存入数据库中，有两个参数，pstmt.setString(问号的位置，给该问好存入的数据）
         userList.forEach(user -> {
             try {
                 pstmt.setString(1, user.getMobile());

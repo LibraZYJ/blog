@@ -31,7 +31,7 @@ public class ArticleController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String requestPath = req.getRequestURI().trim();
-        Gson gson  = new GsonBuilder().create();
+
 
 //        List<Article> articleList = articleService.ListArticle();
 
@@ -49,17 +49,19 @@ public class ArticleController extends HttpServlet {
             /*两表联查，查询用户对应的文章信息*/
             articleVoList = articleService.listAuthorArticle(Long.parseLong(id));
             System.out.println("加载成功");
-
         }
-
-
         ro.setCode(resp.getStatus());
         if (resp.getStatus() == 200){
             ro.setMsg("响应成功");
         }else {
             ro.setMsg("响应失败");
         }
-        ro.setData(articleList);
+        if(articleList!=null){
+            ro.setData(articleList);
+        }else {
+            ro.setData(articleVoList);
+        }
+        Gson gson  = new GsonBuilder().create();
         PrintWriter out = resp.getWriter();
         out.print(gson.toJson(ro));
         out.close();

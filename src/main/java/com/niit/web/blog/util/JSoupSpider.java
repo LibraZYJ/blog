@@ -95,7 +95,7 @@ public class JSoupSpider {
         Document document = null;
         List<Article> articleList = new ArrayList<>(100);
 
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i < 10; i++) {
             try {
                 document = Jsoup.connect("https://www.jianshu.com/c/87b50a03a96e?order_by=top&count=50&page=" + i).get();
             } catch (IOException e) {
