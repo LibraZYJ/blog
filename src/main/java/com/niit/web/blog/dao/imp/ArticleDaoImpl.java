@@ -78,7 +78,7 @@ public class ArticleDaoImpl implements ArticleDao {
         List<ArticleVo> articleVoList = new ArrayList<>(20);
         Connection connection = DbUtil.getConnection();
         /*在文章表和用户表联查，得到结视图对象*/
-        String sql = "SELECT a.id, a.authorId, a.title, a.sketch, a.avatar, content,a.createTime, a.likeAccount,a.commentAccount, b.id, b.nickname, b.avatar\n" +
+        String sql = "SELECT a.id, a.authorId, a.title, a.sketch, b.avatar, content,a.createTime, a.likeAccount,a.commentAccount, b.id, b.nickname, b.avatar\n" +
                 "FROM t_article a\n" +
                 "LEFT JOIN t_user b\n" +
                 "ON a.authorId = b.id\n" +

@@ -5,7 +5,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * @author yujie_zhao
@@ -33,8 +36,18 @@ public class ImageUtil {
         //在缓冲区生成图片，用随机生成的字符串
         BufferedImage img = ImageUtil.getImage(120,35, StringUtil.getcode());
         //指定图片输出目录和图片
-        String filePath = "D:/WebPicture/code4.jpg";
-        File file = new File(filePath);
+        Date date = new Date();
+        String filePath = "D:/"+new SimpleDateFormat("yyyy/MM/dd/").format(date);
+        UUID uuid = UUID.randomUUID();
+        String fileName = uuid + ".jpg";
+        String fileAllName = filePath +"/"+ fileName ;
+        File file = new File(fileAllName);
+        if(!file.exists()){
+            file.mkdirs();  //创建目录为
+        }
+
+//        String filePath = "D:/WebPicture/code4.jpg";
+//        File file = new File(filePath);
         //通过IO和write方法，将图片以指定格式输出到指定文件
         ImageIO.write(img,"jpg",file);
     }

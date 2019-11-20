@@ -31,10 +31,6 @@ public class ArticleController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String requestPath = req.getRequestURI().trim();
-
-
-//        List<Article> articleList = articleService.ListArticle();
-
         ResponseObject ro = new ResponseObject();
 
         List<Article> articleList = null;

@@ -7,18 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a97a83a-6d40-4deb-8db1-f3440c8b5784" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/ImageUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/controller/CodeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/controller/UploadController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/listener/MySessionContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/listener/SessionListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/FileCopy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/index2.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/upload.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/main.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/controller/ArticleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/dao/imp/ArticleDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/dao/imp/ArticleDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/dao/imp/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/dao/imp/UserDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/JSoupSpider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/JSoupSpider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/StringUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/com/niit/web/blog/dao/ArticleDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/com/niit/web/blog/dao/ArticleDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/niit/web/blog/dao/imp/UserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/niit/web/blog/dao/imp/UserDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/niit/web/blog/util/JSoupSpider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/niit/web/blog/util/JSoupSpider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/niit/web/blog/util/ImageUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/blog.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/blog.kotlin_module" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +34,7 @@
         <option value="Arquillian JUnit Test Class" />
         <option value="Interface" />
         <option value="JUnit4 Test Class" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -91,10 +94,15 @@
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.niit.web.blog.dao.impl" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.niit.web.blog.util" />
+      <recent name="com.niit.web.blog.controller" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JavaWeb\blog\src\main\java\com\niit\web\blog\listener" />
       <recent name="D:\JavaWeb\blog\src\main\java\com\niit\web\blog\dao\impl" />
       <recent name="D:\JavaWeb\blog\src\main\java\com\niit\web\blog\util" />
       <recent name="D:\JavaWeb\blog\src\main\resources" />
@@ -186,7 +194,6 @@
       </method>
     </configuration>
     <configuration name="blog" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.24" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER" value="false" />
       <deployment>
         <artifact name="blog:war exploded">
           <settings>
@@ -311,7 +318,10 @@
       <workItem from="1574076514305" duration="195000" />
       <workItem from="1574076728818" duration="4942000" />
       <workItem from="1574141010809" duration="8544000" />
-      <workItem from="1574164703488" duration="6523000" />
+      <workItem from="1574164703488" duration="7336000" />
+      <workItem from="1574207524912" duration="6462000" />
+      <workItem from="1574227051023" duration="9573000" />
+      <workItem from="1574260578218" duration="2141000" />
     </task>
     <task id="LOCAL-00001" summary="blog登录接口实现">
       <created>1573291554558</created>
@@ -341,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574068738987</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="blog登录接口实现(解决多表查询bug）">
+      <created>1574175206606</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1574175206606</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,6 +379,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="blog登录接口实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="blog登录接口实现" />
+    <MESSAGE value="blog登录接口实现(解决多表查询bug）" />
+    <option name="LAST_COMMIT_MESSAGE" value="blog登录接口实现(解决多表查询bug）" />
   </component>
 </project>
