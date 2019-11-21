@@ -50,4 +50,25 @@ public interface UserDao {
      * @throws SQLException
      */
     User getUserById (long id) throws SQLException;
+    /**
+     * 统计用户总数
+     *
+     * @return
+     * @throws SQLException
+     */
+    int getTotalUser() throws SQLException;
+    /**
+     * 查询热门用户
+     *
+     * @return
+     * @throws SQLException
+     */
+    List<User> selectHotUsers() throws SQLException;
+    /**
+     * 查询分页用户
+     *
+     * @return
+     * @throws SQLException
+     */
+    List<User> selectPageUsers(int currentPage, int pageCount) throws SQLException;
 }

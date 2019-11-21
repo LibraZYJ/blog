@@ -110,6 +110,8 @@ public class UserDaoImpl implements UserDao {
             user.setGender(rs.getString("gender"));
             user.setBirthday(rs.getDate("birthday").toLocalDate());
             user.setIntroduction(rs.getString("introduction"));
+            user.setBanner(rs.getString("banner"));
+            user.setEmail(rs.getString("email"));
             user.setAddress(rs.getString("address"));
             user.setFollows(rs.getShort("follows"));
             user.setFans(rs.getShort("fans"));
@@ -119,40 +121,7 @@ public class UserDaoImpl implements UserDao {
         }
         return user;
     }
-//    public User findUserByMobile(String mobile) throws SQLException {
-//        Connection connection = DbUtil.getConnection();
-//        String sql = "SELECT * FROM t_user WHERE mobile = ? ";
-//        PreparedStatement pstmt = connection.prepareStatement(sql);
-//        pstmt.setString(1, mobile);
-//        ResultSet rs = pstmt.executeQuery();
-//        return convertUser(rs).get(0);
-//    }
-//    private List<User> convertUser(ResultSet rs) {
-//        List<User> userList = new ArrayList<>(50);
-//        try {
-//            while (rs.next()) {
-//                User user = new User();
-//                user.setId(rs.getLong("id"));
-//                user.setMobile(rs.getString("mobile"));
-//                user.setPassword(rs.getString("password"));
-//                user.setNickname(rs.getString("nickname"));
-//                user.setAvatar(rs.getString("avatar"));
-//                user.setGender(rs.getString("gender"));
-//                user.setBirthday(rs.getDate("birthday").toLocalDate());
-//                user.setIntroduction(rs.getString("introduction"));
-////                user.setAddress(rs.getString("address"));
-//                user.setFollows(rs.getShort("follows"));
-//                user.setFans(rs.getShort("fans"));
-//                user.setArticles(rs.getShort("articles"));
-//                user.setCreateTime(rs.getTimestamp("create_time").toLocalDateTime());
-//                user.setStatus(rs.getShort("status"));
-//                userList.add(user);
-//            }
-//        } catch (SQLException e) {
-//            logger.error("查询用户数据产生异常");
-//        }
-//        return userList;
-//    }
+
 /*通过id查询用户*/
     @Override
     public User getUserById(long id) throws SQLException {
@@ -180,6 +149,57 @@ public class UserDaoImpl implements UserDao {
             user.setStatus(rs.getShort("status"));
         }
         return user;
+    }
+
+    @Override
+    public int getTotalUser() throws SQLException {
+        Connection connection = DbUtil.getConnection();
+        String sql = "SELECT COUNT(*) FROM t_user ";
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        ResultSet rs = pstmt.executeQuery();
+        int n = rs.getRow();
+        DbUtil.close(rs, pstmt, connection);
+        return n;
+    }
+
+    @Override
+    public List<User> selectHotUsers() throws SQLException {
+        Connection connection = DbUtil.getConnection();
+        String sql = "SELECT * FROM t_user ORDER BY fans DESC LIMIT 10 ";
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        ResultSet rs = pstmt.executeQuery();
+        List<User> userList = new ArrayList<>(50);
+        try {
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getLong("id"));
+                user.setMobile(rs.getString("mobile"));
+                user.setPassword(rs.getString("password"));
+                user.setNickname(rs.getString("nickname"));
+                user.setAvatar(rs.getString("avatar"));
+                user.setGender(rs.getString("gender"));
+                user.setBirthday(rs.getDate("birthday").toLocalDate());
+                user.setIntroduction(rs.getString("introduction"));
+                user.setBanner(rs.getString("banner"));
+                user.setEmail(rs.getString("email"));
+                user.setAddress(rs.getString("address"));
+                user.setFollows(rs.getShort("follows"));
+                user.setFans(rs.getShort("fans"));
+                user.setArticles(rs.getShort("articles"));
+                user.setCreateTime(rs.getTimestamp("create_time").toLocalDateTime());
+                user.setStatus(rs.getShort("status"));
+                userList.add(user);
+            }
+        } catch (SQLException e) {
+            logger.error("查询用户数据产生异常");
+        }
+        DbUtil.close(rs, pstmt, connection);
+        return userList;
+    }
+
+    @Override
+    public List<User> selectPageUsers(int currentPage, int pageCount) throws SQLException {
+        return null;
     }
 
 }

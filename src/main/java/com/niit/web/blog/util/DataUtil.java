@@ -140,4 +140,19 @@ public class DataUtil {
     public static void main(String[] args) {
         System.out.println(DigestUtils.md5Hex("111"));
     }
+
+    public static String getRandomName(String name) {
+        int i = name.indexOf(".");
+        String name1 = name.substring(i);
+        String name2 = UUID.randomUUID()+name1;
+        return name2;
+
+    }
+
+    public static String createFile(String path){
+        File dif = new File(path);
+        dif.mkdirs();
+        return path;
+    }
+
 }

@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -54,5 +55,16 @@ public class UserDaoTest {
     public void getUserById() {
         User user = ServiceFactory.getUserServiceInstance().findUserById(2);
         System.out.println(user);
+    }
+    @Test
+    public void selectAll() throws SQLException {
+        List<User> userList = userDao.selectAll();
+        userList.forEach(System.out::println);
+    }
+
+    @Test
+    public void getTotalUser() throws SQLException {
+        int result = userDao.getTotalUser();
+        System.out.println(result);
     }
 }

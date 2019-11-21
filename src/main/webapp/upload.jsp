@@ -11,8 +11,8 @@
     <title>图片上传</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/api/upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="filename">
+<form action="/api/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="filename" multiple ="multiple">
     <input type="submit" value="上传">
 </form>
 <p>${msg}</p>

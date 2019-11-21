@@ -29,4 +29,6 @@ public class User {
     private Short articles;
     private LocalDateTime createTime;
     private Short status;
+    private String banner;
+    private String email;
 }

@@ -8,6 +8,8 @@ import com.niit.web.blog.factory.ServiceFactory;
 import com.niit.web.blog.service.UserService;
 import com.niit.web.blog.util.Message;
 import com.niit.web.blog.util.ResponseObject;
+import com.niit.web.blog.util.Result;
+import com.niit.web.blog.util.ResultCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.servlet.ServletException;
@@ -28,40 +30,106 @@ import java.util.Map;
  * @Date 15:56 2019/11/9
  * @Version 1.0
  **/
-@WebServlet(urlPatterns = "/sign-in")
+@WebServlet(urlPatterns = {"/api/user", "/api/user/*"})
 public class UserController extends HttpServlet {
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
     private UserService userService = ServiceFactory.getUserServiceInstance();
 
+    List<User> userList = null;
+    User user = null;
+    Gson gson = new GsonBuilder().create();
+    ResponseObject ro = new ResponseObject();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Gson gson  = new GsonBuilder().create();
 
-        List<User> articleList = userService.ListUser();
+        String uri = req.getRequestURI().trim();
+        if ("/api/user".equals(uri)) {
+            String page = req.getParameter("page");
+            if (page != null) {
+                getUsersByPage(req, resp);
+            } else {
+                getHotUsers(req, resp);
+            }
+        } else {
+            getUser(req, resp);
+        }
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String uri = req.getRequestURI().trim();
+        if ("/api/user/sign-in".equals(uri)) {
+            signIn(req, resp);
+        } else if ("/api/user/sign-up".equals(uri)) {
+            signUp(req, resp);
+        } else if ("/api/user/check".equals(uri)) {
+            check(req, resp);
+        }
+    }
 
-        ResponseObject ro = new ResponseObject();
+    private void getUserByMobile(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String requestPath = req.getRequestURI();
+        int position = requestPath.lastIndexOf("/");
+        String id = requestPath.substring(position + 1);
+        /*进入用户详情页*/
+        user = userService.findUserById(Integer.parseInt(id));
         ro.setCode(resp.getStatus());
-        if (resp.getStatus() == 200){
+        if (resp.getStatus() == 200) {
             ro.setMsg("响应成功");
-        }else {
+        } else {
             ro.setMsg("响应失败");
         }
-        ro.setData(articleList);
+        ro.setData(user);
         PrintWriter out = resp.getWriter();
         out.print(gson.toJson(ro));
         out.close();
-
+    }
+    private void getHotUsers(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Gson gson = new GsonBuilder().create();
+        Result result = userService.getHotUsers();
+        PrintWriter out = resp.getWriter();
+        out.print(gson.toJson(result));
+        out.close();
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void getUsersByPage(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String page = req.getParameter("page");
+        resp.getWriter().print("第" + page + "页");
+    }
+
+    private void getUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        userList = userService.ListUser();
+        ro.setCode(resp.getStatus());
+        if (resp.getStatus() == 200) {
+            ro.setMsg("响应成功");
+        } else {
+            ro.setMsg("响应失败");
+        }
+        ro.setData(userList);
+        PrintWriter out = resp.getWriter();
+        out.print(gson.toJson(ro));
+        out.close();
+//        String info = req.getPathInfo().trim();
+//        //取得路径参数
+//        String id = info.substring(info.indexOf("/") + 1);
+//        resp.getWriter().println(id);
+    }
+    private void getUserByCreateTime(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+    }
+    private void signIn(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        /*获得前端提交的数据*/
         BufferedReader reader = req.getReader();
+        /*新建一个可变的字符序列*/
         StringBuilder stringBuilder = new StringBuilder();
         String line = null;
+        /*通过while循环，一行一行的读入内容*/
         while ((line = reader.readLine()) != null){
+            /*将得到的字符放入stringBuilder中*/
             stringBuilder.append(line);
         }
+        /*将错误打入日志*/
         logger.info("登录用户信息:" + stringBuilder.toString());
+        /*new一个gson*/
         Gson gson = new GsonBuilder().create();
         UserDto userDto = gson.fromJson(stringBuilder.toString(), UserDto.class);
         Map<String, Object> map = userService.signIn(userDto);
@@ -76,5 +144,14 @@ public class UserController extends HttpServlet {
         out.print(gson.toJson(ro));
         out.close();
     }
+
+    private void check(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.getWriter().println("验证账号");
+    }
+
+    private void signUp(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.getWriter().println("注册");
+    }
+
 
 }
