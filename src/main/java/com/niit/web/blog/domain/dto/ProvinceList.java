@@ -11,7 +11,6 @@ import java.util.List;
  **/
 public class ProvinceList {
     private List<Province> provinceList;
-
     public List<Province> getProvinceList() {
         return provinceList;
     }

@@ -9,7 +9,6 @@ import com.niit.web.blog.service.UserService;
 import com.niit.web.blog.util.Message;
 import com.niit.web.blog.util.ResponseObject;
 import com.niit.web.blog.util.Result;
-import com.niit.web.blog.util.ResultCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.servlet.ServletException;

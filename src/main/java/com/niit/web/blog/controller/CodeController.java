@@ -28,6 +28,7 @@ public class CodeController extends HttpServlet {
         String codeString = StringUtil.getcode();
         //存入session
         HttpSession session = req.getSession();
+        System.out.println(session.getId());
         session.setAttribute("code",codeString);
         int width = 130;
         int height = 35;

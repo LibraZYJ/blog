@@ -4,6 +4,7 @@ import com.niit.web.blog.dao.TopicDao;
 import com.niit.web.blog.domain.vo.TopicVo;
 import com.niit.web.blog.entity.Topic;
 import com.niit.web.blog.util.DbUtil;
+import jdk.jfr.Description;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,8 +54,14 @@ public class TopicDaoImpl implements TopicDao {
 
     @Override
     public List<Topic> selectHotTopics() throws SQLException {
+        Connection connection = DbUtil.getConnection();
+        String sql = "SELECT * FROM t_topic ORDER BY follows DESC LIMIT 10";
+        PreparedStatement pst = connection.prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        List<Topic> topicList = convert(rs);
+        DbUtil.close(rs,pst, connection);
 
-        return null;
+        return topicList;
     }
 
     @Override
@@ -64,7 +71,29 @@ public class TopicDaoImpl implements TopicDao {
 
     @Override
     public TopicVo getTopic(long id) throws SQLException {
-        return null;
+        Connection connection = DbUtil.getConnection();
+        String sql = "SELECT a.*,b.nickname,b.avatar"+
+                "FROM t_topic a"+
+                "LEFT JOIN t_user b"+
+                "ON a.admin_id = b.id"+
+                "WHERE a.id = ? ";
+        PreparedStatement pst = connection.prepareStatement(sql);
+        pst.setLong(1,id);
+        ResultSet rs = pst.executeQuery();
+        TopicVo topicVo =null;
+        if (rs.next()){
+            topicVo = new TopicVo();
+            topicVo.setId(rs.getLong("id"));
+            topicVo.setAdminId((rs.getLong("admin_id")));
+            topicVo.setTopicName(rs.getString("topic_name"));
+            topicVo.setLogo(rs.getString("logo"));
+            topicVo.setDescription(rs.getString("description"));
+            topicVo.setArticles(rs.getInt("articles"));
+            topicVo.setFollows(rs.getInt("follow"));
+            topicVo.setCreateTime(rs.getTimestamp("create_time").toLocalDateTime());
+        }
+        DbUtil.close(rs,pst, connection);
+        return topicVo;
     }
     private List<Topic> convert(ResultSet rs) {
         List<Topic> topicList = new ArrayList<>(50);
